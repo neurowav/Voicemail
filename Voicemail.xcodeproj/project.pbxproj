@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28E4F1342928EAD900FE2533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1332928EAD900FE2533 /* AppDelegate.swift */; };
+		28E4F1362928EAD900FE2533 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1352928EAD900FE2533 /* SceneDelegate.swift */; };
+		28E4F1382928EAD900FE2533 /* VoiceMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1372928EAD900FE2533 /* VoiceMailController.swift */; };
+		28E4F13D2928EADA00FE2533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E4F13C2928EADA00FE2533 /* Assets.xcassets */; };
+		28E4F1402928EADA00FE2533 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E4F13E2928EADA00FE2533 /* LaunchScreen.storyboard */; };
+		28E4F1492928EC5500FE2533 /* VoiceMailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1482928EC5500FE2533 /* VoiceMailPresenter.swift */; };
+		28E4F14D2928ED7600FE2533 /* PlayAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F14C2928ED7600FE2533 /* PlayAudioView.swift */; };
+		28E4F1502928EF4200FE2533 /* VoiceMailCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F14F2928EF4200FE2533 /* VoiceMailCellItem.swift */; };
+		28E4F1522928EF7700FE2533 /* VoiceMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1512928EF7700FE2533 /* VoiceMailCell.swift */; };
+		28E4F1552928F36500FE2533 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1542928F36500FE2533 /* Formatters.swift */; };
+		28E4F1582928F43800FE2533 /* VoiceMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1572928F43800FE2533 /* VoiceMail.swift */; };
+		28E4F15A2928F5D900FE2533 /* PlayAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1592928F5D900FE2533 /* PlayAudioCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28E4F1302928EAD900FE2533 /* Voicemail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voicemail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E4F1332928EAD900FE2533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28E4F1352928EAD900FE2533 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		28E4F1372928EAD900FE2533 /* VoiceMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailController.swift; sourceTree = "<group>"; };
+		28E4F13C2928EADA00FE2533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E4F13F2928EADA00FE2533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		28E4F1412928EADA00FE2533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E4F1482928EC5500FE2533 /* VoiceMailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailPresenter.swift; sourceTree = "<group>"; };
+		28E4F14C2928ED7600FE2533 /* PlayAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioView.swift; sourceTree = "<group>"; };
+		28E4F14F2928EF4200FE2533 /* VoiceMailCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailCellItem.swift; sourceTree = "<group>"; };
+		28E4F1512928EF7700FE2533 /* VoiceMailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailCell.swift; sourceTree = "<group>"; };
+		28E4F1542928F36500FE2533 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		28E4F1572928F43800FE2533 /* VoiceMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMail.swift; sourceTree = "<group>"; };
+		28E4F1592928F5D900FE2533 /* PlayAudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28E4F12D2928EAD900FE2533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28E4F1272928EAD900FE2533 = {
+			isa = PBXGroup;
+			children = (
+				28E4F1322928EAD900FE2533 /* Voicemail */,
+				28E4F1312928EAD900FE2533 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28E4F1312928EAD900FE2533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F1302928EAD900FE2533 /* Voicemail.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28E4F1322928EAD900FE2533 /* Voicemail */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F1562928F42600FE2533 /* Models */,
+				28E4F14A2928ED5A00FE2533 /* Scenes */,
+				28E4F1532928F35000FE2533 /* Utils */,
+				28E4F14E2928EDF300FE2533 /* Recources */,
+				28E4F1332928EAD900FE2533 /* AppDelegate.swift */,
+				28E4F1352928EAD900FE2533 /* SceneDelegate.swift */,
+				28E4F13E2928EADA00FE2533 /* LaunchScreen.storyboard */,
+				28E4F1412928EADA00FE2533 /* Info.plist */,
+			);
+			path = Voicemail;
+			sourceTree = "<group>";
+		};
+		28E4F1472928EC4300FE2533 /* VoiceMail */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F14B2928ED6900FE2533 /* Cells */,
+				28E4F1482928EC5500FE2533 /* VoiceMailPresenter.swift */,
+				28E4F1372928EAD900FE2533 /* VoiceMailController.swift */,
+				28E4F14F2928EF4200FE2533 /* VoiceMailCellItem.swift */,
+			);
+			path = VoiceMail;
+			sourceTree = "<group>";
+		};
+		28E4F14A2928ED5A00FE2533 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F1472928EC4300FE2533 /* VoiceMail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		28E4F14B2928ED6900FE2533 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F14C2928ED7600FE2533 /* PlayAudioView.swift */,
+				28E4F1512928EF7700FE2533 /* VoiceMailCell.swift */,
+				28E4F1592928F5D900FE2533 /* PlayAudioCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		28E4F14E2928EDF300FE2533 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F13C2928EADA00FE2533 /* Assets.xcassets */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
+		28E4F1532928F35000FE2533 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F1542928F36500FE2533 /* Formatters.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		28E4F1562928F42600FE2533 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28E4F1572928F43800FE2533 /* VoiceMail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28E4F12F2928EAD900FE2533 /* Voicemail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E4F1442928EADA00FE2533 /* Build configuration list for PBXNativeTarget "Voicemail" */;
+			buildPhases = (
+				28E4F12C2928EAD900FE2533 /* Sources */,
+				28E4F12D2928EAD900FE2533 /* Frameworks */,
+				28E4F12E2928EAD900FE2533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Voicemail;
+			productName = Voicemail;
+			productReference = 28E4F1302928EAD900FE2533 /* Voicemail.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28E4F1282928EAD900FE2533 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					28E4F12F2928EAD900FE2533 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 28E4F12B2928EAD900FE2533 /* Build configuration list for PBXProject "Voicemail" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28E4F1272928EAD900FE2533;
+			productRefGroup = 28E4F1312928EAD900FE2533 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28E4F12F2928EAD900FE2533 /* Voicemail */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28E4F12E2928EAD900FE2533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E4F1402928EADA00FE2533 /* LaunchScreen.storyboard in Resources */,
+				28E4F13D2928EADA00FE2533 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28E4F12C2928EAD900FE2533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E4F1502928EF4200FE2533 /* VoiceMailCellItem.swift in Sources */,
+				28E4F1492928EC5500FE2533 /* VoiceMailPresenter.swift in Sources */,
+				28E4F15A2928F5D900FE2533 /* PlayAudioCell.swift in Sources */,
+				28E4F1552928F36500FE2533 /* Formatters.swift in Sources */,
+				28E4F1382928EAD900FE2533 /* VoiceMailController.swift in Sources */,
+				28E4F1342928EAD900FE2533 /* AppDelegate.swift in Sources */,
+				28E4F1582928F43800FE2533 /* VoiceMail.swift in Sources */,
+				28E4F1362928EAD900FE2533 /* SceneDelegate.swift in Sources */,
+				28E4F1522928EF7700FE2533 /* VoiceMailCell.swift in Sources */,
+				28E4F14D2928ED7600FE2533 /* PlayAudioView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		28E4F13E2928EADA00FE2533 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28E4F13F2928EADA00FE2533 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28E4F1422928EADA00FE2533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28E4F1432928EADA00FE2533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28E4F1452928EADA00FE2533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J89BK4CBTY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Voicemail/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = evsegneev.vlad.Voicemail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28E4F1462928EADA00FE2533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J89BK4CBTY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Voicemail/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = evsegneev.vlad.Voicemail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28E4F12B2928EAD900FE2533 /* Build configuration list for PBXProject "Voicemail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E4F1422928EADA00FE2533 /* Debug */,
+				28E4F1432928EADA00FE2533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E4F1442928EADA00FE2533 /* Build configuration list for PBXNativeTarget "Voicemail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E4F1452928EADA00FE2533 /* Debug */,
+				28E4F1462928EADA00FE2533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28E4F1282928EAD900FE2533 /* Project object */;
+}
