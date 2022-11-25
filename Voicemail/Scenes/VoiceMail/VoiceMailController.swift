@@ -8,18 +8,13 @@
 import AVFoundation
 import UIKit
 
-private enum Constants {
-    static let headerFont = UIFont.boldSystemFont(ofSize: 34)
-    static let headerSeparatorInset = NSDirectionalEdgeInsets(top: 0, leading: 34, bottom: 0, trailing: 0)
-    static let selectNumberHeight: CGFloat = 36
-}
-
 final class VoiceMailController: UIViewController {
 
-    var presenter: VoiceMailPresenter!
+    var presenter: VoiceMailPresenterProtocol!
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        let layout = createLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(VoiceMailCell.self, forCellWithReuseIdentifier: VoiceMailCell.reuseId)
         collectionView.register(PlayAudioCell.self, forCellWithReuseIdentifier: PlayAudioCell.reuseId)
         collectionView.delegate = self
@@ -40,6 +35,14 @@ final class VoiceMailController: UIViewController {
     }()
 
     private lazy var displayLink = CADisplayLink(target: self, selector: #selector(updatePlaybackStatus))
+
+    class func instantiate() -> UIViewController {
+        let vc = VoiceMailController()
+        let presenter = VoiceMailPresenter()
+        vc.presenter = presenter
+        presenter.view = vc
+        return vc
+    }
 
     override func loadView() {
         self.view = collectionView
@@ -111,8 +114,12 @@ final class VoiceMailController: UIViewController {
                     self.presenter.onPlay(item: item)
                 }
             }
-            cell?.onBackward = { [unowned self] in self.presenter.rewindAudio(forward: false) }
-            cell?.onForward = { [unowned self] in self.presenter.rewindAudio(forward: true) }
+            cell?.onBackward = { [unowned self] in
+                self.presenter.rewindAudio(forward: false)
+            }
+            cell?.onForward = { [unowned self] in
+                self.presenter.rewindAudio(forward: true)
+            }
             cell?.onDidBeginDraggingSlider = { [unowned self] _ in
                 displayLink.isPaused = true
             }
@@ -141,6 +148,7 @@ final class VoiceMailController: UIViewController {
     }
 
 }
+// MARK: - UICollectionViewDelegate
 extension VoiceMailController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -152,27 +160,15 @@ extension VoiceMailController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = dataSource.itemIdentifier(for: indexPath) {
-            presenter.didSelect(recentItem: item)
+            presenter.didSelect(item: item)
         }
     }
 
 }
-// MARK: Player
-extension VoiceMailController {
-
-    func startUpdatingPlaybackStatus() {
-        displayLink = .init(target: self, selector: #selector(updatePlaybackStatus))
-        displayLink.add(to: .main, forMode: .common)
-    }
-
-    func stopUpdatingPlaybackStatus() {
-        displayLink.invalidate()
-    }
-
-}
-extension VoiceMailController {
+// MARK: - VoiceMailViewIput
+extension VoiceMailController: VoiceMailViewProtocol {
     
-    func updateDataSource(items: [VoiceMailCellItem], section: VoiceMailSection = .voiceMails) {
+    func updateDataSource(items: [VoiceMailCellItem], section: VoiceMailSection) {
         var snapshot = NSDiffableDataSourceSnapshot<VoiceMailSection, VoiceMailCellItem>()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
@@ -193,7 +189,7 @@ extension VoiceMailController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-    func reloadItem(_ item: VoiceMailCellItem, animated: Bool = false) {
+    func reloadItem(_ item: VoiceMailCellItem, animated: Bool) {
         var snapshot = dataSource.snapshot()
         snapshot.reloadItems([item])
         dataSource.apply(snapshot, animatingDifferences: animated)
@@ -210,7 +206,18 @@ extension VoiceMailController {
         }
     }
 
+    // MARK: - Player
+    func startUpdatingPlaybackStatus() {
+        displayLink = .init(target: self, selector: #selector(updatePlaybackStatus))
+        displayLink.add(to: .main, forMode: .common)
+    }
+
+    func stopUpdatingPlaybackStatus() {
+        displayLink.invalidate()
+    }
+
 }
+// MARK: - AVAudioPlayerDelegate
 extension VoiceMailController: AVAudioPlayerDelegate {
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -218,4 +225,9 @@ extension VoiceMailController: AVAudioPlayerDelegate {
         stopUpdatingPlaybackStatus()
     }
 
+}
+private enum Constants {
+    static let headerFont = UIFont.boldSystemFont(ofSize: 34)
+    static let headerSeparatorInset = NSDirectionalEdgeInsets(top: 0, leading: 34, bottom: 0, trailing: 0)
+    static let selectNumberHeight: CGFloat = 36
 }

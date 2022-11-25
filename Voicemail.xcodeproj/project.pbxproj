@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28B7D2A52930A73200EBDFE5 /* VoiceMail+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7D2A42930A73200EBDFE5 /* VoiceMail+Protocols.swift */; };
 		28E4F1342928EAD900FE2533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1332928EAD900FE2533 /* AppDelegate.swift */; };
 		28E4F1362928EAD900FE2533 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1352928EAD900FE2533 /* SceneDelegate.swift */; };
 		28E4F1382928EAD900FE2533 /* VoiceMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1372928EAD900FE2533 /* VoiceMailController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28B7D2A42930A73200EBDFE5 /* VoiceMail+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceMail+Protocols.swift"; sourceTree = "<group>"; };
 		28E4F1302928EAD900FE2533 /* Voicemail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voicemail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E4F1332928EAD900FE2533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28E4F1352928EAD900FE2533 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				28E4F1482928EC5500FE2533 /* VoiceMailPresenter.swift */,
 				28E4F1372928EAD900FE2533 /* VoiceMailController.swift */,
 				28E4F14F2928EF4200FE2533 /* VoiceMailCellItem.swift */,
+				28B7D2A42930A73200EBDFE5 /* VoiceMail+Protocols.swift */,
 			);
 			path = VoiceMail;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B7D2A52930A73200EBDFE5 /* VoiceMail+Protocols.swift in Sources */,
 				28E4F1502928EF4200FE2533 /* VoiceMailCellItem.swift in Sources */,
 				28E4F1492928EC5500FE2533 /* VoiceMailPresenter.swift in Sources */,
 				28E4F15A2928F5D900FE2533 /* PlayAudioCell.swift in Sources */,

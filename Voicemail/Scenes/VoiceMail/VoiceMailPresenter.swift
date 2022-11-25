@@ -10,13 +10,13 @@ import AVFoundation
 
 final class VoiceMailPresenter {
 
-    weak var view: VoiceMailController!
-    private var dataStore: [VoiceMailCellItem: Any] = [:]
+    weak var view: VoiceMailViewProtocol!
+    private var dataStore: [VoiceMailCellItem: VoiceMailStorage] = [:]
     private var voiceMails: [VoiceMail] = VoiceMail.generateMocks()
     
     private var activeVoiceMail: VoiceMail?
     private var player: AVAudioPlayer?
-    private(set) var playerItem: VoiceMailCellItem?
+    var playerItem: VoiceMailCellItem?
 
     var playBackProgress: Float? {
         if let player = player {
@@ -31,36 +31,7 @@ final class VoiceMailPresenter {
     
     static let secondsCount = TimeInterval(15)
 }
-
-extension VoiceMailPresenter {
-
-    func setup() {
-        prepareVoiceMailsData(voiceMails)
-        setupAudio()
-    }
-
-    func didSelect(recentItem: VoiceMailCellItem) {
-        switch dataStore[recentItem] {
-        case let voiceMailStorage as VoiceMailStorage:
-            didSelect(voiceMailStorage: voiceMailStorage, item: recentItem)
-        default:
-            break
-        }
-    }
-
-    func voiceMailExpanded(item: VoiceMailCellItem) -> Bool? {
-        if let voiceMailStorage = dataStore[item] as? VoiceMailStorage {
-            return voiceMailStorage.expanded
-        }
-        return nil
-    }
-    
-    func onRefresh() {
-        onVoiceMailsRefresh()
-    }
-    
-}
-// MARK: Voice Mails
+// MARK: - Voice Mails
 private extension VoiceMailPresenter {
 
     func didSelect(voiceMailStorage: VoiceMailStorage, item: VoiceMailCellItem) {
@@ -98,10 +69,6 @@ private extension VoiceMailPresenter {
     }
     
     func onVoiceMailsRefresh() {
-        
-    }
-
-    func voiceMailsSetup() {
         
     }
 
@@ -147,11 +114,11 @@ private extension VoiceMailPresenter {
         items.append(.recentsViewHeader)
         let cellItems = generateVoiceMailsData()
         items.append(contentsOf: cellItems)
-        view.updateDataSource(items: items)
+        view.updateDataSource(items: items, section: .voiceMails)
     }
 
 }
-// MARK: AVFoundation Setup
+// MARK: - AVFoundation Setup
 private extension VoiceMailPresenter {
 
     func setupAudio() {
@@ -166,7 +133,7 @@ private extension VoiceMailPresenter {
     func createAndStartPlayer(_ url: URL, play: Bool = true) {
         if let player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue) {
             self.player = player
-            player.delegate = view
+            player.delegate = view as? AVAudioPlayerDelegate
             if play {
                 player.prepareToPlay()
                 player.play()
@@ -177,7 +144,7 @@ private extension VoiceMailPresenter {
 
     func updatePlayerState(isPlaying: Bool, isEnabled: Bool? = nil) {
         if let playerItem = playerItem,
-           var voiceMailStorage = dataStore[playerItem] as? VoiceMailStorage,
+           var voiceMailStorage = dataStore[playerItem],
            let activeVoiceMail = activeVoiceMail {
             var viewModel = VoiceMailCellItem.audioModel(
                 activeVoiceMail,
@@ -190,7 +157,7 @@ private extension VoiceMailPresenter {
             }
             playerItem.viewModel = viewModel
             dataStore[playerItem] = voiceMailStorage
-            self.view.reloadItem(playerItem)
+            self.view.reloadItem(playerItem, animated: false)
         }
     }
 
@@ -209,15 +176,31 @@ private extension VoiceMailPresenter {
     }
 
 }
-// MARK: Actions
-extension VoiceMailPresenter {
+// MARK: - VoiceMailPresenterProtocol
+extension VoiceMailPresenter: VoiceMailPresenterProtocol {
+
+    func setup() {
+        prepareVoiceMailsData(voiceMails)
+        setupAudio()
+    }
+
+    func onRefresh() {
+        onVoiceMailsRefresh()
+    }
+
+    func voiceMailExpanded(item: VoiceMailCellItem) -> Bool? {
+        if let voiceMailStorage = dataStore[item] {
+            return voiceMailStorage.expanded
+        }
+        return nil
+    }
 
     func deleteVoiceMail(item: VoiceMailCellItem) {
         
     }
 
     func onPlay(item: VoiceMailCellItem) {
-        guard var storage = dataStore[item] as? VoiceMailStorage else { return }
+        guard var storage = dataStore[item] else { return }
         storage.isPlaying.toggle()
         defer {
             dataStore[item] = storage
@@ -268,6 +251,12 @@ extension VoiceMailPresenter {
         }
         print(player.currentTime)
         view.updatePlaybackStatus()
+    }
+
+    func didSelect(item: VoiceMailCellItem) {
+        if let voiceMailStorage = dataStore[item] {
+            didSelect(voiceMailStorage: voiceMailStorage, item: item)
+        }
     }
 
     private func downloadVoiceMail(_ urlString: String?, completion: @escaping (URL) -> Void) {
