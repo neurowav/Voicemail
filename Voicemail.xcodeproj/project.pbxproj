@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		28B7D2A52930A73200EBDFE5 /* VoiceMail+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7D2A42930A73200EBDFE5 /* VoiceMail+Protocols.swift */; };
+		28D5064E2933D90900BBB137 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5064D2933D90900BBB137 /* AudioService.swift */; };
+		28D506502933D97100BBB137 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D5064F2933D97100BBB137 /* HTTPClient.swift */; };
+		28D506522933E42A00BBB137 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D506512933E42A00BBB137 /* Services.swift */; };
+		28D506552933E4B000BBB137 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 28D506542933E4B000BBB137 /* Swinject */; };
+		28D506572933F0A600BBB137 /* AudioServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D506562933F0A600BBB137 /* AudioServiceError.swift */; };
 		28E4F1342928EAD900FE2533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1332928EAD900FE2533 /* AppDelegate.swift */; };
 		28E4F1362928EAD900FE2533 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1352928EAD900FE2533 /* SceneDelegate.swift */; };
 		28E4F1382928EAD900FE2533 /* VoiceMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4F1372928EAD900FE2533 /* VoiceMailController.swift */; };
@@ -24,6 +29,10 @@
 
 /* Begin PBXFileReference section */
 		28B7D2A42930A73200EBDFE5 /* VoiceMail+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceMail+Protocols.swift"; sourceTree = "<group>"; };
+		28D5064D2933D90900BBB137 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
+		28D5064F2933D97100BBB137 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		28D506512933E42A00BBB137 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		28D506562933F0A600BBB137 /* AudioServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioServiceError.swift; sourceTree = "<group>"; };
 		28E4F1302928EAD900FE2533 /* Voicemail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voicemail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E4F1332928EAD900FE2533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28E4F1352928EAD900FE2533 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,12 +54,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D506552933E4B000BBB137 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28D5064C2933D8E600BBB137 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				28D5064D2933D90900BBB137 /* AudioService.swift */,
+				28D5064F2933D97100BBB137 /* HTTPClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		28E4F1272928EAD900FE2533 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +89,7 @@
 		28E4F1322928EAD900FE2533 /* Voicemail */ = {
 			isa = PBXGroup;
 			children = (
+				28D5064C2933D8E600BBB137 /* Network */,
 				28E4F1562928F42600FE2533 /* Models */,
 				28E4F14A2928ED5A00FE2533 /* Scenes */,
 				28E4F1532928F35000FE2533 /* Utils */,
@@ -124,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				28E4F1542928F36500FE2533 /* Formatters.swift */,
+				28D506512933E42A00BBB137 /* Services.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -132,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				28E4F1572928F43800FE2533 /* VoiceMail.swift */,
+				28D506562933F0A600BBB137 /* AudioServiceError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -152,6 +174,9 @@
 			dependencies = (
 			);
 			name = Voicemail;
+			packageProductDependencies = (
+				28D506542933E4B000BBB137 /* Swinject */,
+			);
 			productName = Voicemail;
 			productReference = 28E4F1302928EAD900FE2533 /* Voicemail.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +205,9 @@
 				Base,
 			);
 			mainGroup = 28E4F1272928EAD900FE2533;
+			packageReferences = (
+				28D506532933E4B000BBB137 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = 28E4F1312928EAD900FE2533 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,14 +236,18 @@
 			files = (
 				28B7D2A52930A73200EBDFE5 /* VoiceMail+Protocols.swift in Sources */,
 				28E4F1502928EF4200FE2533 /* VoiceMailCellItem.swift in Sources */,
+				28D506502933D97100BBB137 /* HTTPClient.swift in Sources */,
+				28D506522933E42A00BBB137 /* Services.swift in Sources */,
 				28E4F1492928EC5500FE2533 /* VoiceMailPresenter.swift in Sources */,
 				28E4F15A2928F5D900FE2533 /* PlayAudioCell.swift in Sources */,
 				28E4F1552928F36500FE2533 /* Formatters.swift in Sources */,
 				28E4F1382928EAD900FE2533 /* VoiceMailController.swift in Sources */,
 				28E4F1342928EAD900FE2533 /* AppDelegate.swift in Sources */,
 				28E4F1582928F43800FE2533 /* VoiceMail.swift in Sources */,
+				28D5064E2933D90900BBB137 /* AudioService.swift in Sources */,
 				28E4F1362928EAD900FE2533 /* SceneDelegate.swift in Sources */,
 				28E4F1522928EF7700FE2533 /* VoiceMailCell.swift in Sources */,
+				28D506572933F0A600BBB137 /* AudioServiceError.swift in Sources */,
 				28E4F14D2928ED7600FE2533 /* PlayAudioView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +456,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28D506532933E4B000BBB137 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28D506542933E4B000BBB137 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28D506532933E4B000BBB137 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28E4F1282928EAD900FE2533 /* Project object */;
 }

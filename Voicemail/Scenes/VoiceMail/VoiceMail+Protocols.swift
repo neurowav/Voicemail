@@ -11,9 +11,7 @@ protocol VoiceMailPresenterProtocol {
     var currentPlayerTime: String? { get }
     
     func setup()
-    func onRefresh()
     func voiceMailExpanded(item: VoiceMailCellItem) -> Bool?
-    func deleteVoiceMail(item: VoiceMailCellItem)
     func onPlay(item: VoiceMailCellItem)
     func updatePlayerCurrentTime(_ sliderValue: Double)
     func audioPlayerDidFinishPlaying(success flag: Bool)
@@ -26,6 +24,7 @@ protocol VoiceMailViewProtocol: AnyObject {
     func insertInDataSource(items: [VoiceMailCellItem], insertAfter: VoiceMailCellItem)
     func deleteInDataSource(items: [VoiceMailCellItem], reconfigure: [VoiceMailCellItem])
     func reloadItem(_ item: VoiceMailCellItem, animated: Bool)
+    func setActivityIndicator(_ value: Bool)
     func updatePlaybackStatus()
     func startUpdatingPlaybackStatus()
     func stopUpdatingPlaybackStatus()

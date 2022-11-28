@@ -11,9 +11,16 @@ import AVFoundation
 final class VoiceMailPresenter {
 
     weak var view: VoiceMailViewProtocol!
+
     private var dataStore: [VoiceMailCellItem: VoiceMailStorage] = [:]
     private var voiceMails: [VoiceMail] = VoiceMail.generateMocks()
-    
+
+    private var cleanupContainer = Set<AnyCancellable>()
+
+    var audioService: AudioService {
+        Services.audioService
+    }
+
     private var activeVoiceMail: VoiceMail?
     private var player: AVAudioPlayer?
     var playerItem: VoiceMailCellItem?
@@ -30,6 +37,7 @@ final class VoiceMailPresenter {
     }
     
     static let secondsCount = TimeInterval(15)
+
 }
 // MARK: - Voice Mails
 private extension VoiceMailPresenter {
@@ -66,10 +74,6 @@ private extension VoiceMailPresenter {
                 view.deleteInDataSource(items: [audioItem], reconfigure: [item])
             }
         }
-    }
-    
-    func onVoiceMailsRefresh() {
-        
     }
 
     func onVoiceMailsFetchSuccess(_ voiceMails: [VoiceMail]) {
@@ -184,19 +188,11 @@ extension VoiceMailPresenter: VoiceMailPresenterProtocol {
         setupAudio()
     }
 
-    func onRefresh() {
-        onVoiceMailsRefresh()
-    }
-
     func voiceMailExpanded(item: VoiceMailCellItem) -> Bool? {
         if let voiceMailStorage = dataStore[item] {
             return voiceMailStorage.expanded
         }
         return nil
-    }
-
-    func deleteVoiceMail(item: VoiceMailCellItem) {
-        
     }
 
     func onPlay(item: VoiceMailCellItem) {
@@ -218,9 +214,24 @@ extension VoiceMailPresenter: VoiceMailPresenterProtocol {
         if storage.voiceMail.audioFileExistLocally, let fileUrl = storage.voiceMail.audioFileLocalUrl {
             createAndStartPlayer(fileUrl)
         } else {
-            downloadVoiceMail(storage.voiceMail.uri) { [weak self] url in
-                self?.createAndStartPlayer(url)
-                self?.updatePlayerState(isPlaying: true, isEnabled: true)
+            if let urlString = storage.voiceMail.uri, let url = URL(string: urlString) {
+                view.setActivityIndicator(true)
+                audioService.downloadAudio(url: url).sink { [weak self] result in
+                    if case let .failure(error) = result {
+                        switch error {
+                        case is NoAudioIdError:
+                            print("no id url parameter")
+                        case is MoveFileAudioErorr:
+                            print("cannot move the downloaded file")
+                        default:
+                            break
+                        }
+                    }
+                    self?.view.setActivityIndicator(false)
+                } receiveValue: { [weak self] url in
+                    self?.createAndStartPlayer(url)
+                    self?.updatePlayerState(isPlaying: true, isEnabled: true)
+                }.store(in: &cleanupContainer)
             }
         }
     }
@@ -257,25 +268,6 @@ extension VoiceMailPresenter: VoiceMailPresenterProtocol {
         if let voiceMailStorage = dataStore[item] {
             didSelect(voiceMailStorage: voiceMailStorage, item: item)
         }
-    }
-
-    private func downloadVoiceMail(_ urlString: String?, completion: @escaping (URL) -> Void) {
-        guard let urlString = urlString, let url = URL(string: urlString) else { return }
-        let components = URLComponents(string: urlString)
-        URLSession.shared.downloadTask(with: url) { tempUrl, _, _ in
-            if let tempUrl = tempUrl, let id = components?.queryItems?.first(where: { $0.name == "id" })?.value {
-                var temporaryFileURL = tempUrl.deletingLastPathComponent()
-                temporaryFileURL.appendPathComponent(id)
-                do {
-                    try FileManager.default.moveItem(at: tempUrl, to: temporaryFileURL)
-                    DispatchQueue.main.async {
-                        completion(temporaryFileURL)
-                    }
-                } catch {
-                    print(error)
-                }
-            }
-        }.resume()
     }
 
 }

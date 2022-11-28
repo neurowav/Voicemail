@@ -33,34 +33,28 @@ final class VoiceMailController: UIViewController {
             )
         }
     }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.color = .blue
+        return indicator
+    }()
 
     private lazy var displayLink = CADisplayLink(target: self, selector: #selector(updatePlaybackStatus))
 
-    class func instantiate() -> UIViewController {
-        let vc = VoiceMailController()
-        let presenter = VoiceMailPresenter()
-        vc.presenter = presenter
-        presenter.view = vc
-        return vc
-    }
-
     override func loadView() {
         self.view = collectionView
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setup()
-        setupCollectionView()
-    }
-
-    func setupCollectionView() {
-        collectionView.refreshControl = .init(
-            frame: .zero,
-            primaryAction: .init(handler: { [weak self] _ in
-                self?.presenter.onRefresh()
-            })
-        )
     }
 
     func createLayout() -> UICollectionViewLayout {
@@ -193,6 +187,10 @@ extension VoiceMailController: VoiceMailViewProtocol {
         var snapshot = dataSource.snapshot()
         snapshot.reloadItems([item])
         dataSource.apply(snapshot, animatingDifferences: animated)
+    }
+
+    func setActivityIndicator(_ value: Bool) {
+        value ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
 
     @objc
